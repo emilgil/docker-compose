@@ -1,0 +1,17 @@
+version: '3'
+services:
+  radarr:
+    container_name: radarr
+    image: linuxserver/radarr
+    restart: always
+    ports:
+      - 7878:7878
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /opt/radarr:/config
+      - /media/downloads:/downloads
+      - /media/movies:/movies
+    environment:
+      - PUID=1000
+      - PGID=1006
+      - TZ=Europe/Stockholm

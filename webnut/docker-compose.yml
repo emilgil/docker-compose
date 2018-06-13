@@ -1,0 +1,13 @@
+version: '3'
+services:
+  webnut:
+    container_name: webnut
+    image: teknologist/webnut
+    restart: always
+    ports:
+      - 6543:6543
+    environment:
+      - UPS_HOST=192.168.1.21
+      - UPS_PORT=3493
+      - UPS_USER=upsmon
+      - UPS_PASSWORD=hkg563

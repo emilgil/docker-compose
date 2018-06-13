@@ -1,0 +1,23 @@
+version: '2'
+services:
+ unifi-controller:
+   container_name: unifi
+   image: jacobalberty/unifi:latest
+   restart: always
+   volumes:
+     - './lib:/var/lib/unifi'
+     - './log:/var/log/unifi'
+     - './run:/var/run/unifi'
+   ports:
+     - '3478:3478/udp'
+     - '10001:10001/udp'
+     - '6789:6789/tcp'
+     - '8080:8080/tcp'
+     - '8880:8880/tcp'
+     - '8443:8443/tcp'
+     - '8843:8843/tcp'
+   environment:
+     - TZ=Europe/Stockholm
+     - RUNAS_UID0=false
+   labels:
+     - 'unifi-controller'

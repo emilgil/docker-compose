@@ -1,0 +1,13 @@
+version: '3'
+services:
+  telegraf:
+    container_name: telegraf
+    image: telegraf
+    volumes:
+      - /opt/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+    networks:
+      - influxdb_influx_net
+
+networks:
+  influxdb_influx_net:
+    external: true

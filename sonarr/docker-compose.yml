@@ -1,0 +1,17 @@
+version: '3'
+services:
+  sonarr:
+    container_name: sonarr
+    image: linuxserver/sonarr
+    restart: always
+    ports:
+      - 8989:8989
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /opt/sonarr:/config
+      - /media/downloads:/downloads
+      - /media/tv:/tv
+    environment:
+      - PUID=1000
+      - PGID=1006
+      - TZ=Europe/Stockholm

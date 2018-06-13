@@ -1,0 +1,11 @@
+version: '3'
+services:
+  kodi:
+    container_name: kodi
+    restart: unless-stopped
+    image: celedhrim/kodi-server
+    volumes:
+      - /opt/kodi/.kodi:/opt/kodi-server/share/kodi/portable_data
+    network_mode: "host"
+    ports:
+      - "8082:8082"

@@ -1,0 +1,7 @@
+version: '3'
+services:
+  duckdns:
+    container_name: duckdns_home
+    restart: unless-stopped
+    image: linuxserver/duckdns
+    env_file: /opt/duckdns/duckdns.env

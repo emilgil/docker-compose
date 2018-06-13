@@ -1,0 +1,11 @@
+version: '3'
+services:
+  hadockermon:
+    container_name: ha-dockermon
+    restart: unless-stopped
+    image: philhawthorne/ha-dockermon
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /opt/ha-dockermon:/config
+    ports:
+      - "8126:8126"

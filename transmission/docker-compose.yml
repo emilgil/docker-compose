@@ -1,0 +1,19 @@
+version: '2'
+
+services:
+    transmission:
+        image: linuxserver/transmission
+        container_name: transmission
+        restart: always
+        ports:
+            - 9091:9091
+            - 51413:51413
+            - 51413:51413/udp
+        volumes:
+            - /opt/transmission:/config
+            - /media/downloads:/downloads
+            - /media/downloads/watch:/watch
+        environment:
+            - PUID=1000
+            - PGID=1006
+            - TZ=Europe/Stockholm
