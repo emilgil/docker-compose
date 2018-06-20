@@ -10,7 +10,7 @@ services:
             - /media/downloads:/downloads
             - /opt/jackett:/config
         environment:
-            - PUID: 1000
-            - PGID: 1006
-            - TZ: Europe/Stockholm
+            - PUID=1000
+            - PGID= 1006
+            - TZ=Europe/Stockholm
 

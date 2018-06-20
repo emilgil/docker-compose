@@ -9,6 +9,8 @@ services:
     devices:
       - /dev/ttyACM0:/dev/ttyACM0
     restart: always
-    # ports:
-    #   - 8123:8123
-    network_mode: host
+    ports:
+      - 8123:8123
+#    network_mode: host
+    environment:
+      - TZ=Europe/Stockholm

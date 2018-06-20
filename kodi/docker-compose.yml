@@ -6,6 +6,6 @@ services:
     image: celedhrim/kodi-server
     volumes:
       - /opt/kodi/.kodi:/opt/kodi-server/share/kodi/portable_data
-    network_mode: "host"
+#    network_mode: "host"
     ports:
       - "8082:8082"
