@@ -1,0 +1,27 @@
+version: '3'
+services:
+  pihole:
+    container_name: pihole
+    restart: unless-stopped
+    image: diginc/pi-hole:debian_dev
+    volumes:
+      - /opt/pihole:/etc/pihole
+      - /opt/pihole/pihole.log:/var/log/pihole.log
+      - /opt/pihole/hosts:/etc/hosts
+#      - /opt/pihole/dnsmasq.d:/etc/dnsmasq.d
+    environment:
+      - ServerIP=192.168.1.21
+      - TZ=Europe/Stockholm
+      - DNS1=192.168.1.1
+      - DNS2=8.8.8.8
+#      - VIRTUAL_HOST=proliant.home
+#      - IPv6=False
+    dns:
+      - 127.0.0.1
+      - 8.8.8.8
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "80:80"
