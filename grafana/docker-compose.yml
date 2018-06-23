@@ -9,7 +9,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - GF_SECURITY_ADMIN_USER=myggan
-      - GF_SECURITY_ADMIN_PASSWORD=hubert
-#    network_mode: host
+      - GF_SECURITY_ADMIN_USER=<user>
+      - GF_SECURITY_ADMIN_PASSWORD=<password>
+    network_mode: host
     user: "1000"
