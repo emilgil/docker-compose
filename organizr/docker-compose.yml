@@ -1,0 +1,14 @@
+version: '3'
+services:
+  organizr:
+    container_name: organizr
+    restart: unless-stopped
+    image: lsiocommunity/organizr:latest
+    volumes:
+      - /opt/organizr:/config
+    environment:
+      - PGID=1006
+      - PUID=1000
+      - TZ=Europe/Stockholm
+    ports:
+      - 8085:80
