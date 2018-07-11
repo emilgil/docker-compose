@@ -12,6 +12,9 @@ services:
     restart: always
     volumes:
      - /opt/ovpn:/etc/openvpn
+    networks:
+      - pihole_default
+
 
   monitor:
     image: ruimarinho/openvpn-monitor
@@ -22,3 +25,9 @@ services:
     depends_on:
       - openvpn
     env_file: /opt/ovpn/monitor.env
+    networks:
+      - pihole_default
+
+networks:
+  pihole_default:
+    external: true
