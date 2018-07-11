@@ -6,17 +6,6 @@ services:
     image: v2tec/watchtower
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    command: --interval 600
-#--debug
-    environment:
-      - TZ=Europe/Stockholm
-      - WATCHTOWER_NOTIFICATIONS=slack
-      - WATCHTOWER_NOTIFICATION_SLACK_HOOK_URL=https://hooks.slack.com/services/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
-#      - WATCHTOWER_NOTIFICATION_EMAIL_FROM=emil.gildebrand@gmail.com 
-#      - WATCHTOWER_NOTIFICATION_EMAIL_TO=emil.gildebrand@gmail.com
-#    command: --schedule @midnight --cleanup --debug 
-#      - WATCHTOWER_NOTIFICATION_EMAIL_SERVER=smtp.gmail.com 
-#      - WATCHTOWER_NOTIFICATION_EMAIL_PORT=25
-#    env_file: /opt/watchtower/settings.env
-#      - WATCHTOWER_NOTIFICATION_EMAIL_SERVER_USER=emil.gildebrand@gmail.co
-#      - WATCHTOWER_NOTIFICATION_EMAIL_SERVER_PASSWORD=nsvvuwcruyjzgvpc     
+#    command: --interval 600
+    command: --schedule @midnight --cleanup
+    env_file: /opt/watchtower/settings.env
