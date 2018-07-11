@@ -18,18 +18,6 @@ services:
     - /etc/localtime:/etc/localtime:ro
     - /media/4tb/downloads/downloads:/data
   env_file: /opt/vpn-torrent/vpn.env
-  
-#  environment:
-    # - OPENVPN_PROVIDER=PIA
-    # - OPENVPN_USERNAME=p6653510
-    # - OPENVPN_PASSWORD=JLgEton5p5
-    # - OPENVPN_CONFIG=Netherlands
-    # - OPENVPN_OPTS=--inactive 3600 --ping 10 --ping-exit 60
-    # - LOCAL_NETWORK=192.168.1.0/24
-    # - TRANSMISSION_WEB_UI=kettu
-    # - PUID=1000
-    # - PGID=1006
-    # - TZ=Europe/Stockholm
 
  proxy:
   container_name: vpn-proxy
