@@ -1,4 +1,4 @@
-version: '3'
+version: '3' 
 services:
   influxdb:
     container_name: influxdb
@@ -8,6 +8,9 @@ services:
       - /opt/influxdb/influxdb.conf:/etc/influxdb/influxdb.conf:ro
       - /opt/influxdb/db:/var/lib/influxdb
     env_file: /opt/influxdb/influxdb.env
+#    environment:
+#      - INFLUX_ADMIN_USER=myggan - 
+#      INFLUX_ADMIN_PASSWORD=hubert
     ports:
       - "8086:8086"
     networks:
