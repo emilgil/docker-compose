@@ -1,6 +1,7 @@
-version: '2' 
+version: '3'
 services:
  transmission:
+  container_name: transmission
   image: haugene/transmission-openvpn
   cap_add:
     - NET_ADMIN
@@ -15,25 +16,19 @@ services:
     - 8.8.4.4
   volumes:
     - /etc/localtime:/etc/localtime:ro
-<<<<<<< HEAD
     - /media/4tb/downloads/downloads:/data
   env_file: /opt/vpn-torrent/vpn.env
 
-=======
-    - /your/storage/path/:/data
-  environment:
-    - OPENVPN_PROVIDER=windscribe
-    - OPENVPN_USERNAME=username
-    - OPENVPN_PASSWORD=password
-    - OPENVPN_OPTS=--inactive 3600 --ping 10 --ping-exit 60
-    - LOCAL_NETWORK=192.168.1.0/24
->>>>>>> parent of ab7d12c... updated compose files
  proxy:
+  container_name: vpn-proxy
   image: haugene/transmission-openvpn-proxy
   links:
     - transmission
   ports:
-    - 8080:8080
+    - 8081:8080
   volumes:
     - /etc/localtime:/etc/localtime:ro
-
+  environment:
+    - PUID=1000
+    - PGID=1006
+    - TZ=Europe/Stockholm
