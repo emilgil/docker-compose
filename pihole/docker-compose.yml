@@ -25,3 +25,12 @@ services:
       - "53:53/tcp"
       - "53:53/udp"
       - "80:80"
+    networks:
+      static_network:
+        ipv4_address: 172.18.0.4
+
+networks:
+  static_network:
+    ipam:
+      config:
+        - subnet: 172.18.0.0/16
