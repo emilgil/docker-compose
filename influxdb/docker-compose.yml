@@ -1,4 +1,4 @@
-version: '3' 
+version: '3'
 services:
   influxdb:
     container_name: influxdb
@@ -7,15 +7,26 @@ services:
     volumes:
       - /opt/influxdb/influxdb.conf:/etc/influxdb/influxdb.conf:ro
       - /opt/influxdb/db:/var/lib/influxdb
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
     env_file: /opt/influxdb/influxdb.env
-#    environment:
-#      - INFLUX_ADMIN_USER=myggan - 
-#      INFLUX_ADMIN_PASSWORD=hubert
     ports:
       - "8086:8086"
-    networks:
-      - influx_net
+    # networks:
+    #   - network
 
-networks:
-  influx_net:
-    driver: bridge
+  telegraf:
+    container_name: telegraf
+    image: telegraf
+    depends_on:
+      - influxdb
+    volumes:
+      - /opt/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+#     networks:
+#       - network
+#
+# networks:
+#   network:
+#     driver: bridge

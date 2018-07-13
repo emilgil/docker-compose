@@ -1,3 +1,6 @@
+# This file is deprecated
+# Please refer to the compose file of Influxdb for details
+
 version: '3'
 services:
   telegraf:
@@ -6,8 +9,8 @@ services:
     volumes:
       - /opt/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
     networks:
-      - influxdb_influx_net
+      - influxdb_network
 
 networks:
-  influxdb_influx_net:
+  influxdb_network:
     external: true
