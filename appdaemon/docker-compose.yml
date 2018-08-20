@@ -1,0 +1,14 @@
+version: '3'
+services:
+  appdaemon:
+    image: acockburn/appdaemon:latest
+    container_name: appdaemon
+    restart: always
+    ports:
+      - 5050:5050
+    volumes:
+      - /opt/appdaemon:/conf
+    environment:
+      - HA_URL="http://192.168.1.21:8123"
+      - HA_KEY="''"
+      - DASH_URL="http://192.168.1.21:5050"

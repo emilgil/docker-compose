@@ -1,0 +1,28 @@
+version: '3'
+services:
+  deconz:
+    image: marthoc/deconz:latest
+    container_name: deconz
+    network_mode: host
+    restart: always
+    volumes:
+      - /opt/deconz:/root/.local/share/dresden-elektronik/deCONZ
+    devices:
+      - /dev/ttyUSB0
+    environment:
+      - DECONZ_WEB_PORT=8089
+      - DECONZ_WS_PORT=4443
+      - DEBUG_INFO=1
+      - DEBUG_APS=0
+      - DEBUG_ZCL=0
+      - DEBUG_ZDP=0
+      - DEBUG_OTAU=0
+
+  deconz-config:
+   container_name: deconz-config
+   image: httpd:latest
+   restart: unless-stopped
+   volumes:
+     - /opt/deconz:/usr/local/apache2/htdocs
+   ports:
+     - 8083:80

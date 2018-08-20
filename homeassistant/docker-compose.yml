@@ -2,17 +2,16 @@ version: '3'
 services:
   homeassistant:
     container_name: home-assistant
-    image: homeassistant/home-assistant
+    image: homeassistant/home-assistant:latest
     volumes:
       - /opt/homeassistant:/config
       - /etc/localtime:/etc/localtime:ro
     devices:
       - /dev/ttyACM0:/dev/ttyACM0
+      - /dev/ttyUSB0:/dev/ttyUSB0
     restart: always
-    ports:
-      - 8123:8123
-#    network_mode: host
+#    ports:
+#      - 8123:8123
+    network_mode: host
     environment:
       - TZ=Europe/Stockholm
-    labels:
-      - com.centurylinklabs.watchtower.enable="false"
