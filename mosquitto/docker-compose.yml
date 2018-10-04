@@ -9,3 +9,4 @@ mqtt:
     - /opt/mosquitto/config:/mosquitto/config
     - /opt/mosquitto/data:/mosquitto/data
     - /opt/mosquitto/log:/mosquitto/log
+  user: 1001:1006

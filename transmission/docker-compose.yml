@@ -1,19 +1,36 @@
-version: '2'
-
+version: '3'
 services:
-    transmission:
-        image: linuxserver/transmission
-        container_name: transmission
-        restart: always
-        ports:
-            - 9091:9091
-            - 51413:51413
-            - 51413:51413/udp
-        volumes:
-            - /opt/transmission:/config
-            - /media/downloads:/downloads
-            - /media/downloads/watch:/watch
-        environment:
-            - PUID=1000
-            - PGID=1006
-            - TZ=Europe/Stockholm
+ transmission:
+  container_name: transmission
+  image: haugene/transmission-openvpn
+  cap_add:
+    - NET_ADMIN
+  devices:
+    - /dev/net/tun
+  restart: unless-stopped
+  ports:
+    - "9091:9091"
+    - "8888:8888"
+  dns:
+    - 8.8.8.8
+    - 8.8.4.4
+  volumes:
+    - /etc/localtime:/etc/localtime:ro
+    - /media/4tb/downloads/downloads:/data
+    - /opt/transmission:/etc/transmission-daemon
+  env_file: /opt/transmission/vpn.env
+
+ proxy:
+  container_name: vpn-proxy
+  image: haugene/transmission-openvpn-proxy
+  restart: always
+  links:
+    - transmission
+  ports:
+    - 8081:8080
+  volumes:
+    - /etc/localtime:/etc/localtime:ro
+  environment:
+    - PUID=1000
+    - PGID=1006
+    - TZ=Europe/Stockholm

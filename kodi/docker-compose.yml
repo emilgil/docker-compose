@@ -3,9 +3,14 @@ services:
   kodi:
     container_name: kodi
     restart: unless-stopped
-    image: celedhrim/kodi-server
+    image: linuxserver/kodi-headless:Krypton
     volumes:
-      - /opt/kodi/.kodi:/opt/kodi-server/share/kodi/portable_data
-    network_mode: "host"
-#    ports:
-#      - "8082:8082"
+      - /opt/kodi/.kodi:/config/.kodi
+    environment:
+      - PGID=1006
+      - PUID=1000
+      - TZ=Europe/Stockholm
+    ports:
+      - 8082:8082
+      - 9777:9777/udp
+      - 9090:9090

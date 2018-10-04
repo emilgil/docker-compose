@@ -15,3 +15,5 @@ services:
     network_mode: host
     environment:
       - TZ=Europe/Stockholm
+    labels:
+      - com.centurylinklabs.watchtower.enable=false

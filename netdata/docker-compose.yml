@@ -3,6 +3,7 @@ services:
   netdata:
     image: titpetric/netdata:latest
     container_name: netdata
+    restart: unless-stopped
     hostname: proliant.local
     ports:
       - 19999:19999

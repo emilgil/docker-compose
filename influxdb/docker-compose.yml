@@ -12,8 +12,9 @@ services:
     env_file: /opt/influxdb/influxdb.env
     ports:
       - "8086:8086"
-    # networks:
-    #   - network
+    labels:
+      - com.centurylinklabs.watchtower.enable=false
+
 
   telegraf:
     container_name: telegraf
@@ -24,9 +25,3 @@ services:
       - /opt/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
-#     networks:
-#       - network
-#
-# networks:
-#   network:
-#     driver: bridge
