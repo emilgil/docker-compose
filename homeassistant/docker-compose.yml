@@ -2,10 +2,14 @@ version: '3'
 services:
   homeassistant:
     container_name: home-assistant
-    image: homeassistant/home-assistant:latest
+    image: homeassistant/home-assistant:0.84.1
     volumes:
       - /opt/homeassistant:/config
       - /etc/localtime:/etc/localtime:ro
+      - /media/hanna2tb:/media/hanna2tb:ro
+      - /media/emil2tb:/media/emil2tb:ro
+      - /media/backup4tb:/media/backup4tb:ro
+      - /media/4tb:/media/4tb:ro
     devices:
       - /dev/ttyACM0:/dev/ttyACM0
       - /dev/ttyUSB0:/dev/ttyUSB0

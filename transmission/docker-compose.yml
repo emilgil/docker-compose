@@ -9,8 +9,8 @@ services:
     - /dev/net/tun
   restart: unless-stopped
   ports:
-    - "9091:9091"
-    - "8888:8888"
+    - "9091"
+    - "8888"
   dns:
     - 8.8.8.8
     - 8.8.4.4
