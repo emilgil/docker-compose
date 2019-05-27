@@ -3,7 +3,7 @@ services:
   pihole:
     container_name: pihole
     restart: unless-stopped
-    image: diginc/pi-hole:debian_dev
+    image: pihole/pihole:latest
     volumes:
       - /opt/pihole:/etc/pihole
       - /opt/pihole/pihole.log:/var/log/pihole.log
@@ -14,6 +14,7 @@ services:
       - TZ=Europe/Stockholm
       - DNS1=192.168.1.1
       - DNS2=8.8.8.8
+      - WEBPASSWORD='YX-ScRwL'
 #      - VIRTUAL_HOST=proliant.home
 #      - IPv6=False
     dns:

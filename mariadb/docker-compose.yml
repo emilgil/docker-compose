@@ -5,6 +5,7 @@ services:
   db:
     image: mariadb
     restart: always
+    container_name: mariadb
     volumes:
       - /opt/mariadb:/etc/mysql/conf.d
       - /opt/mariadb:/var/lib/mysql
@@ -18,6 +19,12 @@ services:
 
   adminer:
     image: adminer
+    container_name: adminer
     restart: always
     ports:
       - 8088:8080
+
+networks:
+  default:
+    external:
+      name: br0

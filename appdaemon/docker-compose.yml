@@ -8,8 +8,15 @@ services:
       - 5050:5050
     volumes:
       - /opt/appdaemon:/conf
+#    env_file: /opt/appdaemon/appdaemon.env
     environment:
       - HA_URL="http://192.168.1.21:8123"
 #      - HA_KEY="''"
-      - HA_KEY="hkg563"
+#      - HA_KEY="hkg563"
+      - TOKEN="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiI5ODI1MDQ3ZGU4M2U0NDdiYWNmZmZkY2ZhNTQ4YWFiNCIsImlhdCI6MTU0OTEzODYwNCwiZXhwIjoxODY0NDk4NjA0fQ.nShOJiChzBVox70H3fs7HvlxEFqYkgJWKWFXoIUAiog"
       - DASH_URL="http://192.168.1.21:5050"
+
+networks:
+  default:
+    external:
+      name: br0

@@ -9,3 +9,7 @@ services:
       - /opt/ha-dockermon:/config
     ports:
       - "8126:8126"
+networks:
+  default:
+    external:
+      name: br0

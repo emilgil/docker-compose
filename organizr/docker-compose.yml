@@ -12,3 +12,7 @@ services:
       - TZ=Europe/Stockholm
     ports:
       - 8085:80
+networks:
+  default:
+    external:
+      name: br0

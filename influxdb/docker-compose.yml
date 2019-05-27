@@ -3,7 +3,7 @@ services:
   influxdb:
     container_name: influxdb
     restart: unless-stopped
-    image: influxdb:1.5.2
+    image: influxdb:latest
     volumes:
       - /opt/influxdb/influxdb.conf:/etc/influxdb/influxdb.conf:ro
       - /opt/influxdb/db:/var/lib/influxdb
@@ -25,3 +25,7 @@ services:
       - /opt/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
+networks:
+  default:
+    external:
+      name: br0

@@ -15,3 +15,7 @@ services:
       - PUID=1000
       - PGID=1006
       - TZ=Europe/Stockholm
+networks:
+  default:
+    external:
+      name: br0

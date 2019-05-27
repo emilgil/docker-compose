@@ -9,8 +9,8 @@ services:
     - /dev/net/tun
   restart: unless-stopped
   ports:
-    - "9091"
-    - "8888"
+    - "9091:9091"
+    - "8888:8888"
   dns:
     - 8.8.8.8
     - 8.8.4.4
@@ -34,3 +34,18 @@ services:
     - PUID=1000
     - PGID=1006
     - TZ=Europe/Stockholm
+  links:
+    - transmission:transmission
+
+networks:
+  default:
+    external:
+      name: br0
+#networks:
+#  servers_local:
+#    driver: macvlan
+#    driver_opts:
+#      parent: enp2s0
+#    ipam:
+#      config:
+#        - subnet: 192.168.1.240/28

@@ -12,9 +12,11 @@ services:
     restart: always
     volumes:
      - /opt/openvpn:/etc/openvpn
-    networks:
-      pihole_static_network:
-        ipv4_address: 172.18.0.5
+#    networks:
+#      default:
+#        external:
+#          name: static
+#          ipv4_address: 172.16.0.5
 
   monitor:
     image: ruimarinho/openvpn-monitor
@@ -25,10 +27,13 @@ services:
     depends_on:
       - openvpn
     env_file: /opt/openvpn/monitor.env
-    networks:
-      pihole_static_network:
-        ipv4_address: 172.18.0.6
+#    networks:
+#      default:
+#        external:
+#          name: static
+#          ipv4_address: 172.16.0.6
 
 networks:
-  pihole_static_network:
-    external: true
+  default:
+    external:
+      name: br0

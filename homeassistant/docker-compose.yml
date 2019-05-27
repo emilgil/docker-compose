@@ -6,8 +6,8 @@ services:
     volumes:
       - /opt/homeassistant:/config
       - /etc/localtime:/etc/localtime:ro
-      - /media/hanna2tb:/media/hanna2tb:ro
-      - /media/emil2tb:/media/emil2tb:ro
+      - /media/8tb:/media/8tb:ro
+      - /media/timemachine:/media/timemachine:ro
       - /media/backup4tb:/media/backup4tb:ro
       - /media/4tb:/media/4tb:ro
     devices:
@@ -19,5 +19,9 @@ services:
     network_mode: host
     environment:
       - TZ=Europe/Stockholm
-    labels:
-      - com.centurylinklabs.watchtower.enable=false
+    # labels:
+    #   - com.centurylinklabs.watchtower.enable=false
+networks:
+  default:
+    external:
+      name: br0

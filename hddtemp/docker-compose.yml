@@ -10,3 +10,8 @@ services:
       - 7634:7634
     environment:
       - DRIVES=sd[abcde]
+      
+networks:
+  default:
+    external:
+      name: br0

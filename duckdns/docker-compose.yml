@@ -5,3 +5,8 @@ services:
     restart: unless-stopped
     image: linuxserver/duckdns
     env_file: /opt/duckdns/duckdns.env
+    
+networks:
+  default:
+    external:
+      name: br0

@@ -8,7 +8,7 @@ services:
     volumes:
       - /opt/deconz:/root/.local/share/dresden-elektronik/deCONZ
     devices:
-      - /dev/ttyUSB0
+      - /dev/conbee:/dev/ttyUSB0
     environment:
       - DECONZ_WEB_PORT=8089
       - DECONZ_WS_PORT=4443
@@ -19,8 +19,7 @@ services:
       - DEBUG_OTAU=0
       - DECONZ_VNC_MODE=1
       - DECONZ_VNC_PORT=5999
-    labels:
-      - com.centurylinklabs.watchtower.enable=false
+      - TZ=Europe/Stockholm
 
   deconz-config:
    container_name: deconz-config
@@ -30,3 +29,8 @@ services:
      - /opt/deconz:/usr/local/apache2/htdocs
    ports:
      - 8083:80
+
+networks:
+  default:
+    external:
+      name: br0
