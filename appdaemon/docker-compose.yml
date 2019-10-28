@@ -15,6 +15,7 @@ services:
 #      - HA_KEY="hkg563"
       - TOKEN="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiI5ODI1MDQ3ZGU4M2U0NDdiYWNmZmZkY2ZhNTQ4YWFiNCIsImlhdCI6MTU0OTEzODYwNCwiZXhwIjoxODY0NDk4NjA0fQ.nShOJiChzBVox70H3fs7HvlxEFqYkgJWKWFXoIUAiog"
       - DASH_URL="http://192.168.1.21:5050"
+      - TZ=Europe/Stockholm
 
 networks:
   default:

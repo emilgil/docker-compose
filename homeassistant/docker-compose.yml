@@ -10,6 +10,9 @@ services:
       - /media/timemachine:/media/timemachine:ro
       - /media/backup4tb:/media/backup4tb:ro
       - /media/4tb:/media/4tb:ro
+      - /media/root:/media/root:ro
+      - /media/temp:/media/temp:ro
+      - /media/crypt:/media/crypt:ro
     devices:
       - /dev/ttyACM0:/dev/ttyACM0
       - /dev/ttyUSB0:/dev/ttyUSB0
